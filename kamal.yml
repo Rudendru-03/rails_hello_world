@@ -1,0 +1,34 @@
+# kamal.yml
+service: hello_world
+
+# Name of the container image.
+image: rahul0310/hello_world
+
+# Deploy to this server
+servers:
+  web:
+    - 45.76.60.111
+
+# Enable SSL auto certification via Let's Encrypt
+proxy:
+  ssl: true
+  host: 45.76.60.111
+
+# Credentials for Docker Hub
+registry:
+  username: rahul0310
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# Set environment variables
+env:
+  secret:
+    - RAILS_MASTER_KEY
+  clear:
+    RAILS_ENV: production
+    DATABASE_URL: postgres://hello_world:1234@localhost/hello_world_production
+    DB_HOST: localhost
+
+# Use remote build on the server instead of building locally
+builder:
+  remote: ssh://root@45.76.60.111
