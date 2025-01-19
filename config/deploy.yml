@@ -115,3 +115,5 @@ builder:
 #     port: 6379
 #     directories:
 #       - data:/data
+git:
+  binary_path: C:\Program Files\Git\cmd\git.exe
